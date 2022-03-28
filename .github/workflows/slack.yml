@@ -15,27 +15,23 @@ jobs:
             {
               "blocks": [
                 {
-                  "blocks": [
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "omg fren 👋 i see you pushed a commit\nlet's review why you shouldn't have 😸"
-                      }
-                    },
-                    {
-                      "type": "image",
-                      "image_url": "https://i.imgflip.com/6ad0ws.jpg",
-                      "alt_text": "some shit meme"
-                    },
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "result is *${{job.status}}*\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                      }
-                    }
-                  ]
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "omg fren 👋 i see you pushed a commit\nlet's review why you shouldn't have 😸"
+                  }
+                },
+                {
+                  "type": "image",
+                  "image_url": "https://i.imgflip.com/6ad0ws.jpg",
+                  "alt_text": "some shit meme"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "result is *${{job.status}}*\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  }
                 }
               ]
             }
