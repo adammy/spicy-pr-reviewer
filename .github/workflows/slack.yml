@@ -6,8 +6,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Send GitHub Action trigger data to Slack workflow
+      - name: Post to le slack
         id: slack
-        uses: slackapi/slack-github-action@v1.18.0
+        uses: slackapi/slack-github-action@v1.16.0
+        with:
+          channel-id: 'C039BBTCX7T'
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "omg fren 👋 i see you pushed a commit\nlet's review why you shouldn't have 😸"
+                  }
+                },
+                {
+                  "type": "image",
+                  "image_url": "https://i.imgflip.com/6ad0ws.jpg",
+                  "alt_text": "some shit meme"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "result is *${{job.status}}*\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  }
+                }
+              ]
+            }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
